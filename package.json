@@ -12,6 +12,7 @@
       "npx eslint --fix"
     ]
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nikoloiosifovich/node-store.git"
@@ -36,6 +37,7 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
 }
