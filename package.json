@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nikoloiosifovich/node-store/issues"
   },
-  "homepage": "https://github.com/nikoloiosifovich/node-store#readme"
+  "homepage": "https://github.com/nikoloiosifovich/node-store#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^3.1.0"
+  }
 }
