@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "lint-staged":{
+  "lint-staged": {
     "src/**/*.js": [
       "npx eslint --fix"
     ]
@@ -29,6 +29,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "git-commit-msg-linter": "^3.1.0",
+    "husky": "^6.0.0",
     "lint-staged": "^10.5.4"
   }
 }
