@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -i node_modules src/server.js",
-    "debug": "nodemon -i node_modules --inspect src/server.js",
+    "dev": "nodemon -i node_modules bin/server.js",
+    "debug": "nodemon -i node_modules --inspect bin/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "lint-staged": {
