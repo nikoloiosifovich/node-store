@@ -1,9 +1,8 @@
 import express, { json, urlencoded } from 'express'
 import morgan from 'morgan'
-import { config } from 'dotenv'
+import 'dotenv/config.js'
 
 import { appRoutes } from './routes.js'
-config()
 
 const app = express()
 
