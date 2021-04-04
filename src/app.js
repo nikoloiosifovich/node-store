@@ -13,6 +13,6 @@ app.use(morgan('dev'))
 
 app.set('port', process.env.PORT || 3333)
 
-app.use(appRoutes)
+app.use('/products', appRoutes)
 
 export { app }
