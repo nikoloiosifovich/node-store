@@ -1,3 +1,5 @@
+import Product from '../models/product.js'
+
 const productsController = () => ({
   getProducts: (req, res) => {
     return res.send({
@@ -6,13 +8,17 @@ const productsController = () => ({
     })
   },
 
-  createProduct: (req, res) => {
-    const { id, title } = req.body
+  createProduct: async (req, res) => {
+    try {
+      const product = new Product(req.body)
+      const savedProduct = await product.save()
 
-    return res.status(201).json({
-      id,
-      title
-    })
+      res.status(201).json(savedProduct)
+    } catch (error) {
+      res.status(400).json({
+        message: 'Unable to create a product.'
+      })
+    }
   },
 
   updateProduct: (req, res) => {
