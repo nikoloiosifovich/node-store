@@ -1,11 +1,16 @@
 import Product from '../models/product.js'
 
 const productsController = () => ({
-  getProducts: (req, res) => {
-    return res.send({
-      title: 'Node Store API',
-      version: '0.0.1'
-    })
+  getProducts: async (req, res) => {
+    try {
+      const products = await Product.find()
+
+      res.json(products)
+    } catch (error) {
+      res.status(400).json({
+        message: 'Unable to list products.'
+      })
+    }
   },
 
   createProduct: async (req, res) => {
