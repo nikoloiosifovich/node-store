@@ -44,6 +44,23 @@ const productsController = () => ({
     }
   },
 
+  getProductByTag: async (req, res) => {
+    try {
+      const { tag } = req.params
+
+      const product = await Product.find({
+        tags: tag,
+        active: true
+      }, 'title description price slug tags')
+
+      res.json(product)
+    } catch (error) {
+      res.status(404).json({
+        message: 'Product not found.'
+      })
+    }
+  },
+
   createProduct: async (req, res) => {
     try {
       const product = new Product(req.body)
