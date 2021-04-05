@@ -3,7 +3,7 @@ import Product from '../models/product.js'
 const productsController = () => ({
   getProducts: async (req, res) => {
     try {
-      const products = await Product.find()
+      const products = await Product.find({ active: true }, 'title slug price')
 
       res.json(products)
     } catch (error) {
