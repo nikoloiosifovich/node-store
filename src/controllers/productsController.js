@@ -13,6 +13,23 @@ const productsController = () => ({
     }
   },
 
+  getProductBySlug: async (req, res) => {
+    try {
+      const { slug } = req.params
+
+      const product = await Product.findOne({
+        slug,
+        active: true
+      }, 'title description price slug tags')
+
+      res.json(product)
+    } catch (error) {
+      res.status(404).json({
+        message: 'Product not found.'
+      })
+    }
+  },
+
   createProduct: async (req, res) => {
     try {
       const product = new Product(req.body)
