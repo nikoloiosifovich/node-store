@@ -30,6 +30,20 @@ const productsController = () => ({
     }
   },
 
+  getProductById: async (req, res) => {
+    try {
+      const { id } = req.params
+
+      const product = await Product.findById(id)
+
+      res.json(product)
+    } catch (error) {
+      res.status(404).json({
+        message: 'Product not found.'
+      })
+    }
+  },
+
   createProduct: async (req, res) => {
     try {
       const product = new Product(req.body)
