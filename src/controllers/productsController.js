@@ -88,6 +88,10 @@ const productsController = () => ({
         }
       }, (result) => result)
 
+      if (!updatedProduct) {
+        throw new Error()
+      }
+
       res.json(updatedProduct)
     } catch (error) {
       res.status(400).json({
