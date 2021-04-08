@@ -74,14 +74,26 @@ const productsController = () => ({
     }
   },
 
-  updateProduct: (req, res) => {
-    const { id } = req.params
-    const { title } = req.body
+  updateProduct: async (req, res) => {
+    try {
+      const { id } = req.params
+      const { title, description, slug, price } = req.body
 
-    return res.json({
-      id,
-      title
-    })
+      const updatedProduct = await Product.findByIdAndUpdate(id, {
+        $set: {
+          title,
+          description,
+          slug,
+          price
+        }
+      }, (result) => result)
+
+      res.json(updatedProduct)
+    } catch (error) {
+      res.status(400).json({
+        message: 'Unable to updates product.'
+      })
+    }
   },
 
   deleteProduct: (req, res) => {

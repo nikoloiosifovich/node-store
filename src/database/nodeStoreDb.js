@@ -4,11 +4,12 @@ import 'dotenv/config.js'
 (async () => {
   try {
     const mongooseOptions = {
+      // user: `${process.env.MONGO_USER}`,
+      // pass: `${process.env.MONGO_PASSWORD}`,
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true
-      // user: `${process.env.MONGO_USER}`,
-      // pass: `${process.env.MONGO_PASSWORD}`
+      useCreateIndex: true,
+      useFindAndModify: false
     }
 
     const nodeStoreDb = await mongoose.connect(
