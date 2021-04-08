@@ -100,10 +100,20 @@ const productsController = () => ({
     }
   },
 
-  deleteProduct: (req, res) => {
-    return res.json({
-      message: 'Deleted!'
-    })
+  deleteProduct: async (req, res) => {
+    try {
+      const { id } = req.params
+
+      await Product.findOneAndRemove(id)
+
+      res.json({
+        message: 'Product deleted'
+      })
+    } catch (error) {
+      res.status(400).json({
+        message: 'Unable to updates product.'
+      })
+    }
   }
 })
 
