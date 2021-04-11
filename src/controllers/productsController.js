@@ -58,8 +58,7 @@ const productsController = () => ({
 
   createProduct: async (req, res) => {
     try {
-      const product = new Product(req.body)
-      const savedProduct = await product.save()
+      const savedProduct = await productRepository.createProduct(req.body)
 
       res.status(201).json(savedProduct)
     } catch (error) {

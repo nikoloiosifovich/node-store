@@ -13,7 +13,9 @@ const productRepository = () => ({
   getByTag: (tag) => Product.findOne({
     tags: tag,
     active: true
-  }, 'title description price slug tags')
+  }, 'title description price slug tags'),
+
+  createProduct: (product) => Product.create(product)
 })
 
 export default productRepository()
