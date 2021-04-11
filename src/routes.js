@@ -1,15 +1,15 @@
 import { Router } from 'express'
 import { celebrator, Segments, Joi } from 'celebrate'
 
-import { productsController } from './controllers/productsController.js'
+import productsController from './controllers/productsController.js'
 
 const appRoutes = Router()
 const celebrate = celebrator({ reqContext: true }, { convert: true })
 
-appRoutes.get('/', productsController().getProducts)
-appRoutes.get('/:slug', productsController().getProductBySlug)
-appRoutes.get('/admin/:id', productsController().getProductById)
-appRoutes.get('/tags/:tag', productsController().getProductByTag)
+appRoutes.get('/', productsController.getProducts)
+appRoutes.get('/:slug', productsController.getProductBySlug)
+appRoutes.get('/admin/:id', productsController.getProductById)
+appRoutes.get('/tags/:tag', productsController.getProductByTag)
 
 appRoutes.post('/', celebrate({
   [Segments.BODY]: Joi.object().keys({
@@ -20,10 +20,10 @@ appRoutes.post('/', celebrate({
     active: Joi.boolean().default(true).required(),
     tags: Joi.array().not().empty().required()
   })
-}), productsController().createProduct)
+}), productsController.createProduct)
 
-appRoutes.put('/:id', productsController().updateProduct)
+appRoutes.put('/:id', productsController.updateProduct)
 
-appRoutes.delete('/:id', productsController().deleteProduct)
+appRoutes.delete('/:id', productsController.deleteProduct)
 
 export { appRoutes }

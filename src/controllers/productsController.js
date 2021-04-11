@@ -117,4 +117,4 @@ const productsController = () => ({
   }
 })
 
-export { productsController }
+export default productsController()
