@@ -1,9 +1,10 @@
 import Product from '../models/product.js'
+import productRepository from '../repositories/productRepository.js'
 
 const productsController = () => ({
   getProducts: async (req, res) => {
     try {
-      const products = await Product.find({ active: true }, 'title slug price')
+      const products = await productRepository.get()
 
       res.json(products)
     } catch (error) {
