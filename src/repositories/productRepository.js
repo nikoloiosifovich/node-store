@@ -15,7 +15,22 @@ const productRepository = () => ({
     active: true
   }, 'title description price slug tags'),
 
-  createProduct: (product) => Product.create(product)
+  createProduct: (product) => Product.create(product),
+
+  updateProduct: (
+    id,
+    title,
+    description,
+    slug,
+    price
+  ) => Product.findByIdAndUpdate(id, {
+    $set: {
+      title,
+      description,
+      slug,
+      price
+    }
+  })
 })
 
 export default productRepository()

@@ -73,18 +73,15 @@ const productsController = () => ({
       const { id } = req.params
       const { title, description, slug, price } = req.body
 
-      const updatedProduct = await Product.findByIdAndUpdate(id, {
-        $set: {
-          title,
-          description,
-          slug,
-          price
-        }
-      }, (result) => result)
+      const updatedProduct = await productRepository.updateProduct(
+        id,
+        title,
+        description,
+        slug,
+        price
+      )
 
-      if (!updatedProduct) {
-        throw new Error()
-      }
+      if (!updatedProduct) throw new Error()
 
       res.json(updatedProduct)
     } catch (error) {
