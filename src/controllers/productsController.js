@@ -32,7 +32,7 @@ const productsController = () => ({
     try {
       const { id } = req.params
 
-      const product = await Product.findById(id)
+      const product = await productRepository.getById(id)
 
       res.json(product)
     } catch (error) {
