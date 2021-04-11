@@ -46,10 +46,7 @@ const productsController = () => ({
     try {
       const { tag } = req.params
 
-      const product = await Product.find({
-        tags: tag,
-        active: true
-      }, 'title description price slug tags')
+      const product = await productRepository.getByTag(tag)
 
       res.json(product)
     } catch (error) {

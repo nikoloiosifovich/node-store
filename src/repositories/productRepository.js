@@ -8,7 +8,12 @@ const productRepository = () => ({
     active: true
   }, 'title description price slug tags'),
 
-  getById: (id) => Product.findById(id)
+  getById: (id) => Product.findById(id),
+
+  getByTag: (tag) => Product.findOne({
+    tags: tag,
+    active: true
+  }, 'title description price slug tags')
 })
 
 export default productRepository()
