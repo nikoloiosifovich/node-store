@@ -30,7 +30,9 @@ const productRepository = () => ({
       slug,
       price
     }
-  })
+  }),
+
+  deleteProduct: (id) => Product.findOneAndRemove(id)
 })
 
 export default productRepository()

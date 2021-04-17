@@ -1,4 +1,3 @@
-import Product from '../models/product.js'
 import productRepository from '../repositories/productRepository.js'
 
 const productsController = () => ({
@@ -95,14 +94,16 @@ const productsController = () => ({
     try {
       const { id } = req.params
 
-      await Product.findOneAndRemove(id)
+      const deletedProduct = await productRepository.deleteProduct(id)
+
+      if (!deletedProduct) throw new Error()
 
       res.json({
         message: 'Product deleted'
       })
     } catch (error) {
       res.status(400).json({
-        message: 'Unable to updates product.'
+        message: 'Unable to deletes product.'
       })
     }
   }
