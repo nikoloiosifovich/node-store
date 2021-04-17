@@ -30,7 +30,7 @@ const productRepository = () => ({
       slug,
       price
     }
-  }),
+  }, result => result),
 
   deleteProduct: (id) => Product.findOneAndRemove(id)
 })
