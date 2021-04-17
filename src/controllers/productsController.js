@@ -19,6 +19,8 @@ const productsController = () => ({
 
       const product = await productRepository.getBySlug(slug)
 
+      if (!product) throw new Error()
+
       res.json(product)
     } catch (error) {
       res.status(404).json({
@@ -33,6 +35,8 @@ const productsController = () => ({
 
       const product = await productRepository.getById(id)
 
+      if (!product) throw new Error()
+
       res.json(product)
     } catch (error) {
       res.status(404).json({
@@ -46,6 +50,8 @@ const productsController = () => ({
       const { tag } = req.params
 
       const product = await productRepository.getByTag(tag)
+
+      if (!product) throw new Error()
 
       res.json(product)
     } catch (error) {
