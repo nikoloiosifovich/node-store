@@ -19,7 +19,7 @@ const productSchema = new Schema(
       default: 'created'
     },
     items: [{
-      quantidade: {
+      quantity: {
         type: Number,
         required: true,
         default: 1
