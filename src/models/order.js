@@ -12,11 +12,6 @@ const productSchema = new Schema(
       required: true,
       trim: true
     },
-    createDate: {
-      type: Date,
-      required: true,
-      default: Date.now
-    },
     status: {
       type: String,
       required: true,
