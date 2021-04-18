@@ -1,11 +1,10 @@
 import { Router } from 'express'
 import { celebrator, Segments, Joi } from 'celebrate'
 
-import productsController from './controllers/productsController.js'
-import customersController from './controllers/customersController.js'
+import productsController from '../controllers/productsController.js'
 
 const productRoutes = Router()
-const customerRoutes = Router()
+
 const celebrate = celebrator({ reqContext: true }, { convert: true })
 
 productRoutes.get('/', productsController.getProducts)
@@ -28,12 +27,4 @@ productRoutes.put('/:id', productsController.updateProduct)
 
 productRoutes.delete('/:id', productsController.deleteProduct)
 
-customerRoutes.post('/', celebrate({
-  [Segments.BODY]: Joi.object().keys({
-    name: Joi.string().min(3).required(),
-    email: Joi.string().email().lowercase().required(),
-    password: Joi.string().min(6).required().strict()
-  })
-}), customersController.createCustomer)
-
-export { productRoutes, customerRoutes }
+export default productRoutes

@@ -3,7 +3,9 @@ import { errors } from 'celebrate'
 import morgan from 'morgan'
 import 'dotenv/config.js'
 
-import { productRoutes, customerRoutes } from './routes.js'
+import productRoutes from './routes/productRoutes.js'
+import customerRoutes from './routes/customerRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
 
 const app = express()
 
@@ -15,6 +17,7 @@ app.set('port', process.env.PORT || 3333)
 
 app.use('/products', productRoutes)
 app.use('/customers', customerRoutes)
+app.use('/orders', orderRoutes)
 
 app.use(errors())
 
