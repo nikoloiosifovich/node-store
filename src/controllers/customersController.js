@@ -1,4 +1,5 @@
 import customerRepository from '../repositories/customerRepository.js'
+import emailService from '../services/email-service.js'
 
 const customersController = () => ({
   getCustomers: async (req, res) => {
@@ -15,7 +16,16 @@ const customersController = () => ({
 
   createCustomer: async (req, res) => {
     try {
+      const { name, email } = req.body
+      const subject = 'Bem vindo ao Node Store'
+
       const savedCustomer = await customerRepository.create(req.body)
+
+      emailService.sendMail(
+        email,
+        subject,
+        name
+      )
 
       res.status(201).json(savedCustomer)
     } catch (error) {
