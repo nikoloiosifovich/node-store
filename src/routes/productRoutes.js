@@ -19,7 +19,8 @@ productRoutes.post('/', celebrate({
     description: Joi.string().min(10).required(),
     price: Joi.number().positive().required(),
     active: Joi.boolean().default(true).required(),
-    tags: Joi.array().not().empty().required()
+    tags: Joi.array().not().empty().required(),
+    image: Joi.string().required()
   })
 }), productsController.createProduct)
 
