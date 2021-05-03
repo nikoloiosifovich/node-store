@@ -1,5 +1,5 @@
 import customerRepository from '../repositories/customerRepository.js'
-import emailService from '../services/email-service.js'
+import emailService from '../services/emailService.js'
 
 const customersController = () => ({
   getCustomers: async (req, res) => {
